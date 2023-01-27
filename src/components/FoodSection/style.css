@@ -1,0 +1,44 @@
+:root {
+    --default: #1698D9;
+    --hover: #2EA8E6;
+    --selected: #D91667;
+    --hoverSelected: #E52E7A;
+    --outOfStock: #B3B3B3;
+    --grayDescription: #666666;
+}
+
+:root .food-infolist__item[data-out-of-stock="true"] {
+    --default: var(--outOfStock)
+}
+
+:root .food-infolist__item:hover[data-out-of-stock="false"] {
+    --default: var(--hover)
+}
+
+:root .food-infolist__item[data-selected="true"][data-out-of-stock="false"] {
+    --default: var(--selected);
+}
+
+:root .food-infolist__item[data-show-red-text="true"][data-selected="true"][data-out-of-stock="false"]:hover {
+    --grayDescription: var(--hoverSelected);
+    --default: var(--hoverSelected)
+}
+
+.food-infolist__item:hover[data-out-of-stock="false"] {
+    cursor: pointer;
+}
+
+.food-section__container {
+    padding: 41px 80px;
+    /* background: url('../../assets/background.jpg') no-repeat;
+    background-size: cover; */
+}
+
+.food-section__heading {
+    margin-bottom: 27px;
+}
+
+.food-infolist {
+    display: flex;
+    justify-content: space-between;
+}

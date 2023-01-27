@@ -1,0 +1,18 @@
+.food-infolist__description {
+    margin-top: 15px;
+    text-align: center;
+    font-size: 13px;
+    color: #fff;
+}
+
+.food-infolist__buy-btn {
+    color: var(--default);
+}
+
+.food-infolist__buy-btn_text-decoration-dashed {
+    text-decoration: underline dashed;
+}
+
+.food-infolist__out-of-stock-title {
+    color: #FFFF66
+}

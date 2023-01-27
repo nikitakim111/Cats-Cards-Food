@@ -1,0 +1,109 @@
+:root {
+    --black: #000000;
+    --gray: #666666;
+    --grayDescription: #666666;
+    --outOfStock: #B3B3B3;
+}
+
+:root .food-card_theme_fade {
+    --black: var(--outOfStock);
+    --gray: var(--outOfStock)
+}
+
+.food-card {
+    position: relative;
+    padding: 18px 59px 12px 43px;
+    display: flex;
+    align-items: initial;
+    flex-direction: column;
+    background: url('../../assets/cat.jpg') #F2F2F2 no-repeat 47% 181.5%;
+    clip-path: polygon(13.5% 0, 100% 0, 100% 100%, 0 100%, 0 9%);
+    border: var(--default) 4px solid;
+    border-radius: 12px;
+    box-sizing: border-box;
+}
+
+.food-card::before {
+    top: -15px;
+    content: '';
+    position: absolute;
+    width: 9px;
+    height: 60px;
+    left: 9px;
+    transform: rotateZ(45deg);
+    border-right: var(--default) 5px solid;
+    z-index: 1;
+}
+
+.food-card_theme_fade::after {
+    position: absolute;
+    content: '';
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 12px;
+    background: #FFFFFF;
+    opacity: 0.25;
+}
+
+.food-card__description {
+    margin-bottom: 5px;
+    color: var(--grayDescription);
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+}
+
+.food-card__title {
+    display: flex;
+    color: var(--black);
+    flex-direction: column;
+    margin-bottom: 15px;
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 54px;
+}
+
+.food-card__taste {
+    transform: translateX(2px);
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 28px;
+}
+
+.food-card__benefit-title {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+    color: var(--gray);
+}
+
+.food-card__bold-portion {
+    font-weight: 700;
+}
+
+.food-card__food-weight-circle {
+    display: flex;
+    transform: translateX(47.5px);
+    margin-top: 209.4px;
+    flex-direction: column;
+    align-items: center;
+    width: 80px;
+    height: 80px;
+    align-self: flex-end;
+    color: #FFFFFF;
+    background-color: var(--default);
+    border-radius: 50px;
+    z-index: 1;
+}
+
+.food-card__food-weight-kg {
+    font-size: 20px;
+    transform: translateY(10px);
+}
+
+.food-card__food-weight-title {
+    transform: translateY(11px);
+    font-size: 42px;
+}

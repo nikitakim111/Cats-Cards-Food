@@ -89,9 +89,27 @@ export const FoodSection = () => {
     target.dataset[key] = String(card[key]);
   };
 
+  const addNewCard = () => {
+    setFoodInfo(prev => [
+      {
+        taste: "с фуа-гра",
+        benefits: {
+          mouse: 1,
+          benefitPortion: 10,
+        },
+        foodWeightTitle: "0,5",
+        underCardDescr: "Печень утки разварная с артишоками.",
+        selected: false,
+        showRedText: false,
+        outOfStock: false
+      },
+      ...prev])
+  }
+
   return (
     <section className="food-section">
       <div className="container food-section__container">
+      <button className="btn-add-card" onClick={addNewCard}>Добавить карточку товара</button>
         <Heading classname="food-section__heading">
           Ты сегодня покормил кота?
         </Heading>

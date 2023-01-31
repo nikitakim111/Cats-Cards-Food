@@ -16,6 +16,7 @@
     display: flex;
     align-items: initial;
     flex-direction: column;
+    min-height: 480.39px;
     background: url('../../assets/cat.jpg') #F2F2F2 no-repeat 47% 181.5%;
     clip-path: polygon(13.5% 0, 100% 0, 100% 100%, 0 100%, 0 9%);
     border: var(--default) 4px solid;
@@ -86,7 +87,7 @@
 .food-card__food-weight-circle {
     display: flex;
     transform: translateX(47.5px);
-    margin-top: 209.4px;
+    margin-top: auto;
     flex-direction: column;
     align-items: center;
     width: 80px;

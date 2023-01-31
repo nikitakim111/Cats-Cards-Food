@@ -2,6 +2,8 @@ import React from "react";
 import './style.css'
 import {FoodCardProps, StringChildrenProps} from './types'
 
+// Использую dot notation для гибкости карточки
+
 const Description: React.FC<StringChildrenProps> = ({children}) => <span className="food-card__description">{children}</span>
 
 const Title: React.FC<StringChildrenProps> = ({children}) => <h3 className="food-card__title">Нямушка <span className="food-card__taste">{children}</span></h3>

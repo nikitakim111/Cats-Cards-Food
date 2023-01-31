@@ -57,7 +57,7 @@ export const FoodSection = () => {
       productAmount === 1
     )
       return wordsArr[0];
-    else if (onesOfProduct > 1 && onesOfProduct < 5 && productAmount > 20)
+    else if (onesOfProduct > 1 && onesOfProduct < 5 && (productAmount > 20 || productAmount < 10))
       return wordsArr[1];
     else return wordsArr[2];
   }
@@ -95,21 +95,29 @@ export const FoodSection = () => {
         <Heading classname="food-section__heading">
           Ты сегодня покормил кота?
         </Heading>
-        <ul className="food-infolist">
-          {foodInfo.map((item) => {
+        <ul className="food-infolist" aria-label="Корм для котов">
+          {foodInfo.map((item, index) => {
             return (
               <li
-                className='food-infolist__item'
+                tabIndex={index + 1}
+                className='food-infolist__item food-section__item'
+                aria-labelledby='Выбрать корм для кота'
                 data-selected={item.selected}
                 data-show-red-text={item.showRedText}
                 data-out-of-stock={item.outOfStock}
                 key={item.taste}
-                onClick={(e) => {
-                  reverseBooleanDataAttr(e, item, 'selected');
-                }}
+                onClick={(e) => {reverseBooleanDataAttr(e, item, 'selected');}}
                 onMouseEnter={(e) => {reverseBooleanDataAttr(e, item, 'showRedText')}}
-                onMouseLeave={(e) => {reverseBooleanDataAttr(e, item, 'showRedText', true)}}>
+                onMouseLeave={(e) => {reverseBooleanDataAttr(e, item, 'showRedText', true)}}
+                onFocus={(e) => {reverseBooleanDataAttr(e, item, 'showRedText')}}
+                onBlur={(e) => {reverseBooleanDataAttr(e, item, 'showRedText', true)}}
+                onKeyDown={(e) => {if (e.code === 'Enter' || e.code === 'Space') reverseBooleanDataAttr(e, item, 'selected');}}
+                >
                 <FoodCard isOutOfStock={item.outOfStock}>
+                  {/*
+                  Теперь компонент стал более гибким на случай если в будущем надо будет что-то добавить или поменять местами в карточке.
+                  Можно поменять местами к примеру Description и Title - тоже неплохо смотрится. Но есть нюанс с FoodWeightTitle, его лучше не менять :)
+                  */}
                   <FoodCard.Description>
                   {item.showRedText ? 'Котэ не одобряет?' : 'Сказочное заморское яство'}
                   </FoodCard.Description>
@@ -121,7 +129,7 @@ export const FoodSection = () => {
                     {`${item.benefits.mouse === 1 ? "": item.benefits.mouse} ${getCorrectEndingOfWord(item.benefits.mouse, ["мышь","мыши","мышей",])} в подарок`}
                   </FoodCard.BenefitTitle>
                   <FoodCard.BenefitTitle>
-                    {item.benefits.mouse > 5 ? 'заказчик доволен' : ''}
+                    {item.benefits.mouse >= 5 ? 'заказчик доволен' : ''}
                   </FoodCard.BenefitTitle>
                   <FoodCard.FoodWeightTitle>
                     {item.foodWeightTitle}

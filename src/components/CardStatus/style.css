@@ -9,10 +9,16 @@
     color: var(--default);
 }
 
+.food-infolist__buy-btn:hover {
+    color: var(--hover);
+}
+
 .food-infolist__buy-btn_text-decoration-dashed {
     text-decoration: underline dashed;
+    cursor: pointer;
 }
 
 .food-infolist__out-of-stock-title {
     color: #FFFF66
 }
+

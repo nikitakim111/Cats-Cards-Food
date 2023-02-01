@@ -7,11 +7,6 @@
   font-style: normal;
 }
 
-html {
-  background: url('./assets/background.jpg') no-repeat;
-    background-size: cover;
-}
-
 .App {
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }

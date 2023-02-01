@@ -1,13 +1,14 @@
 import { Heading } from "../Heading/Heading";
 import { FoodCard } from "../FoodCard/FoodCard";
 import "./style.css";
-import typeoffoodInfo from "./types";
+import {typeoffoodInfo, reverseBooleanDataAtrrArgs} from "./types";
 import React, { useState} from "react";
 import { CardStatus } from "../CardStatus/CardStatus";
 
 export const FoodSection = () => {
   const [foodInfo, setFoodInfo] = useState<typeoffoodInfo[]>([
     {
+      id: 1,
       taste: "с фуа-гра",
       benefits: {
         mouse: 1,
@@ -17,9 +18,11 @@ export const FoodSection = () => {
       underCardDescr: "Печень утки разварная с артишоками.",
       selected: false,
       showRedText: false,
-      outOfStock: false
+      outOfStock: false,
+      hoveredBuyBtn: false,
     },
     {
+      id: 2,
       taste: "с рыбой",
       benefits: {
         mouse: 2,
@@ -27,11 +30,13 @@ export const FoodSection = () => {
       },
       foodWeightTitle: "2",
       underCardDescr: "Головы щучьи с чесноком да свежайшая сёмгушка.",
-      selected: false,
+      selected: true,
       showRedText: false,
-      outOfStock: false
+      outOfStock: false,
+      hoveredBuyBtn: false,
     },
     {
+      id: 3,
       taste: "с курой",
       benefits: {
         mouse: 5,
@@ -41,7 +46,8 @@ export const FoodSection = () => {
       underCardDescr: "Филе из цыплят с трюфелями в бульоне.",
       selected: false,
       showRedText: false,
-      outOfStock: true
+      outOfStock: true,
+      hoveredBuyBtn: false,
     },
   ]);
 
@@ -62,7 +68,7 @@ export const FoodSection = () => {
     else return wordsArr[2];
   }
 
-  const reverseBooleanDataAttr = (event: React.SyntheticEvent, card: typeoffoodInfo, key: 'selected' | 'showRedText', isLeaved?: boolean) => {
+  const reverseBooleanDataAttr: reverseBooleanDataAtrrArgs = (event, card, key, isLeaved) => {
     const target = event.currentTarget as typeof event.currentTarget & {
       dataset: {
         [key: string]: string
@@ -89,27 +95,9 @@ export const FoodSection = () => {
     target.dataset[key] = String(card[key]);
   };
 
-  const addNewCard = () => {
-    setFoodInfo(prev => [
-      {
-        taste: "с фуа-гра",
-        benefits: {
-          mouse: 1,
-          benefitPortion: 10,
-        },
-        foodWeightTitle: "0,5",
-        underCardDescr: "Печень утки разварная с артишоками.",
-        selected: false,
-        showRedText: false,
-        outOfStock: false
-      },
-      ...prev])
-  }
-
   return (
     <section className="food-section">
       <div className="container food-section__container">
-      <button className="btn-add-card" onClick={addNewCard}>Добавить карточку товара</button>
         <Heading classname="food-section__heading">
           Ты сегодня покормил кота?
         </Heading>
@@ -117,21 +105,9 @@ export const FoodSection = () => {
           {foodInfo.map((item, index) => {
             return (
               <li
-                tabIndex={index + 1}
                 className='food-infolist__item food-section__item'
-                aria-labelledby='Выбрать корм для кота'
-                data-selected={item.selected}
-                data-show-red-text={item.showRedText}
-                data-out-of-stock={item.outOfStock}
-                key={item.taste}
-                onClick={(e) => {reverseBooleanDataAttr(e, item, 'selected');}}
-                onMouseEnter={(e) => {reverseBooleanDataAttr(e, item, 'showRedText')}}
-                onMouseLeave={(e) => {reverseBooleanDataAttr(e, item, 'showRedText', true)}}
-                onFocus={(e) => {reverseBooleanDataAttr(e, item, 'showRedText')}}
-                onBlur={(e) => {reverseBooleanDataAttr(e, item, 'showRedText', true)}}
-                onKeyDown={(e) => {if (e.code === 'Enter' || e.code === 'Space') reverseBooleanDataAttr(e, item, 'selected');}}
-                >
-                <FoodCard isOutOfStock={item.outOfStock}>
+                aria-labelledby='Выбрать корм для кота'>
+                <FoodCard isOutOfStock={item.outOfStock} handleClick={reverseBooleanDataAttr} product={item}>
                   {/*
                   Теперь компонент стал более гибким на случай если в будущем надо будет что-то добавить или поменять местами в карточке.
                   Можно поменять местами к примеру Description и Title - тоже неплохо смотрится. Но есть нюанс с FoodWeightTitle, его лучше не менять :)
@@ -157,7 +133,9 @@ export const FoodSection = () => {
                 isSelected={item.selected}
                 description={item.underCardDescr}
                 isOutOfStock={item.outOfStock}
-                taste={item.taste} />
+                taste={item.taste}
+                handleClick={reverseBooleanDataAttr}
+                product={item}/>
               </li>);})}
         </ul>
       </div>

@@ -1,45 +1,19 @@
-:root {
-    --default: #1698D9;
-    --hover: #2EA8E6;
-    --selected: #D91667;
-    --hoverSelected: #E52E7A;
-    --outOfStock: #B3B3B3;
-    --grayDescription: #666666;
+.food-section {
+    background: url('../../assets/background.jpg') no-repeat;
+    background-size: cover;
 }
 
-:root .food-infolist__item:focus-visible[data-out-of-stock="false"] {
-    --default: var(--hover)
-}
-
-:root .food-infolist__item:focus-visible[data-show-red-text="true"][data-selected="true"][data-out-of-stock="false"] {
-    --grayDescription: var(--hoverSelected);
-    --default: var(--hoverSelected)
-}
-
-:root .food-infolist__item[data-out-of-stock="true"] {
-    --default: var(--outOfStock)
-}
-
-:root .food-infolist__item:hover[data-out-of-stock="false"] {
-    --default: var(--hover)
-}
-
-:root .food-infolist__item[data-selected="true"][data-out-of-stock="false"] {
-    --default: var(--selected);
-}
-
-:root .food-infolist__item[data-show-red-text="true"][data-selected="true"][data-out-of-stock="false"]:hover {
-    --grayDescription: var(--hoverSelected);
-    --default: var(--hoverSelected)
+.food-section__container {
+    padding: 41px 80px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .food-infolist {
     display: flex;
     flex-wrap: wrap;
-}
-
-.food-infolist__item:hover[data-out-of-stock="false"] {
-    cursor: pointer;
 }
 
 .food-infolist__item {
@@ -48,34 +22,12 @@
     outline: 0;
 }
 
-.food-section__container {
-    padding: 41px 80px;
-    /* background: url('../../assets/background.jpg') no-repeat;
-    background-size: cover; */
-}
-
 .food-section__heading {
     margin-bottom: 27px;
 }
 
 .food-section__item:not(:nth-child(3n)):not(:last-child) {
     margin-right: calc((100% - 320.266px * 3) / 2);
-}
-
-.btn-add-card {
-    padding: 10px;
-    border-radius: 12px;
-    background-color: rgb(43, 43, 43);
-    color: red;
-    cursor: pointer;
-}
-
-.btn-add-card:hover {
-    background-color: rgb(70, 70, 70);
-}
-
-.btn-add-card:active {
-    background-color: rgb(94, 94, 94);
 }
 
 @media screen and (max-width: 1180px) {

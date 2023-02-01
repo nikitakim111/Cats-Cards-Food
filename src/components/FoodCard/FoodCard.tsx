@@ -12,8 +12,21 @@ const BenefitTitle: React.FC<StringChildrenProps> = ({children}) => <span classN
 
 const FoodWeightTitle: React.FC<StringChildrenProps> = ({children}) => <div className="food-card__food-weight-circle"><span className="food-card__food-weight-title">{children}</span><span className="food-card__food-weight-kg">кг</span></div>
 
-const FoodCard: React.FC<FoodCardProps> & FoodCardExtansions = ({children, isOutOfStock}) => {
-    return <div className={isOutOfStock ? "food-card food-card_theme_fade" : "food-card"}>
+const FoodCard: React.FC<FoodCardProps> & FoodCardExtansions = ({children, isOutOfStock, handleClick, product}) => {
+    return <div
+    tabIndex={product.id}
+    data-selected={product.selected}
+    data-show-red-text={product.showRedText}
+    data-out-of-stock={product.outOfStock}
+    data-hovered-buy-btn={product.hoveredBuyBtn}
+    key={product.taste}
+    onClick={(e) => {handleClick(e, product, 'selected');}}
+    onMouseEnter={(e) => {handleClick(e, product, 'showRedText')}}
+    onMouseLeave={(e) => {handleClick(e, product, 'showRedText', true)}}
+    onFocus={(e) => {handleClick(e, product, 'showRedText')}}
+    onBlur={(e) => {handleClick(e, product, 'showRedText', true)}}
+    onKeyDown={(e) => {if (e.code === 'Enter' || e.code === 'Space') {handleClick(e, product, 'selected')};}}
+    className={isOutOfStock ? "food-card food-card_theme_fade" : "food-card"}>
         {children}
     </div>
 }

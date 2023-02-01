@@ -1,13 +1,64 @@
 :root {
+    --default: #1698D9;
+    --hover: #2EA8E6;
+    --selected: #D91667;
+    --hoverSelected: #E52E7A;
     --black: #000000;
     --gray: #666666;
     --grayDescription: #666666;
     --outOfStock: #B3B3B3;
 }
 
-:root .food-card_theme_fade {
+.food-card_theme_fade {
     --black: var(--outOfStock);
     --gray: var(--outOfStock)
+}
+
+/* Стиль для ВЫБРАННОЙ доступной карточки с помощью TAB */
+.food-card:focus-visible[data-out-of-stock="false"] {
+    --default: var(--hover)
+}
+
+/* Стиль для КРАСНОГО ТЕКСТА при ВЫБОРЕ доступной карточки с помощью TAB */
+.food-card:focus-visible[data-show-red-text="true"][data-selected="true"][data-out-of-stock="false"] {
+    --grayDescription: var(--hoverSelected);
+    --default: var(--hoverSelected)
+}
+
+/* Стиль для НЕДОСТУПНОЙ карточки */
+.food-card[data-out-of-stock="true"] {
+    --default: var(--outOfStock)
+}
+
+/* Стиль в случае НАВЕДЕНИЯ на кнопку "Купи" у доступной карточки */
+.food-card[data-out-of-stock="false"][data-hovered-buy-btn="true"] {
+    --default: var(--hover)
+}
+
+/* Стиль для состояния НАВЕДЕНИЯ доступной карточки */
+.food-card:hover[data-out-of-stock="false"] {
+    --default: var(--hover)
+}
+
+/* Стиль для состояния НАВЕДЕНИЯ кнопки "Купи" у доступной карточки */
+.food-card:hover ~ .food-infolist__description .food-infolist__buy-btn {
+    --default: var(--hover);
+}
+
+/* Стиль для ВЫБРАННОЙ карточки */
+.food-card[data-selected="true"][data-out-of-stock="false"] {
+    --default: var(--selected);
+}
+
+/* Стиль для состояния НАВЕДЕНИЯ ВЫБРАННОЙ карточки */
+.food-card:hover[data-show-red-text="true"][data-selected="true"][data-out-of-stock="false"] {
+    --grayDescription: var(--hoverSelected);
+    --default: var(--hoverSelected)
+}
+
+/* Стиль для показа курсора Pointer для доступный карточек */
+.food-card:hover[data-out-of-stock="false"] {
+    cursor: pointer;
 }
 
 .food-card {
@@ -22,6 +73,7 @@
     border: var(--default) 4px solid;
     border-radius: 12px;
     box-sizing: border-box;
+    outline: 0;
 }
 
 .food-card::before {

@@ -2,7 +2,7 @@ import React from "react";
 import './style.css'
 import { cardStatusProps } from "./types";
 
-export const CardStatus: React.FC<cardStatusProps> = ({isSelected, description, isOutOfStock, taste}) => {
+export const CardStatus: React.FC<cardStatusProps> = ({isSelected, description, isOutOfStock, taste, handleClick, product}) => {
     let title
 
     if (isSelected) {
@@ -12,7 +12,11 @@ export const CardStatus: React.FC<cardStatusProps> = ({isSelected, description, 
     } else {
         title = <>
             Чего сидишь? Порадуй котэ,{" "}
-            <span className="food-infolist__buy-btn food-infolist__buy-btn_text-decoration-dashed">
+            <span
+            onClick={(e) => {handleClick(e, product, 'selected'); handleClick(e, product, 'hoveredBuyBtn')}}
+            onMouseEnter={(e) => {handleClick(e, product, 'hoveredBuyBtn')}}
+            onMouseLeave={(e) => {handleClick(e, product, 'hoveredBuyBtn')}}
+            className="food-infolist__buy-btn food-infolist__buy-btn_text-decoration-dashed">
                 купи
             </span>
             <span className="food-infolist__buy-btn">.</span>

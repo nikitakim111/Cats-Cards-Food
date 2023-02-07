@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/Cats-Cards-Food/static/css/main.ec751e1b.css",
-    "main.js": "/Cats-Cards-Food/static/js/main.8fcd6d80.js",
+    "main.css": "/Cats-Cards-Food/static/css/main.d3f67437.css",
+    "main.js": "/Cats-Cards-Food/static/js/main.3bfcd4ae.js",
     "static/media/background.jpg": "/Cats-Cards-Food/static/media/background.29c756a073674a8637e5.jpg",
     "static/media/cat.jpg": "/Cats-Cards-Food/static/media/cat.58676bb34b670741bded.jpg",
     "static/media/Exo2.0-Thin.otf": "/Cats-Cards-Food/static/media/Exo2.0-Thin.51c257bfa8ec3e0cfb4b.otf",
     "static/media/Exo20-Thin.woff": "/Cats-Cards-Food/static/media/Exo20-Thin.99a2d5ccf998c10b5568.woff",
     "index.html": "/Cats-Cards-Food/index.html",
-    "main.ec751e1b.css.map": "/Cats-Cards-Food/static/css/main.ec751e1b.css.map",
-    "main.8fcd6d80.js.map": "/Cats-Cards-Food/static/js/main.8fcd6d80.js.map"
+    "main.d3f67437.css.map": "/Cats-Cards-Food/static/css/main.d3f67437.css.map",
+    "main.3bfcd4ae.js.map": "/Cats-Cards-Food/static/js/main.3bfcd4ae.js.map"
   },
   "entrypoints": [
-    "static/css/main.ec751e1b.css",
-    "static/js/main.8fcd6d80.js"
+    "static/css/main.d3f67437.css",
+    "static/js/main.3bfcd4ae.js"
   ]
 }

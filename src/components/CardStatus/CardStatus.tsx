@@ -12,13 +12,13 @@ export const CardStatus: React.FC<cardStatusProps> = ({isSelected, description, 
     } else {
         title = <>
             Чего сидишь? Порадуй котэ,{" "}
-            <span
+            <button
             onClick={(e) => {handleClick(e, product, 'selected'); handleClick(e, product, 'hoveredBuyBtn')}}
             onMouseEnter={(e) => {handleClick(e, product, 'hoveredBuyBtn')}}
             onMouseLeave={(e) => {handleClick(e, product, 'hoveredBuyBtn')}}
             className="food-infolist__buy-btn food-infolist__buy-btn_text-decoration-dashed">
                 купи
-            </span>
+            </button>
             <span className="food-infolist__buy-btn">.</span>
         </>
     }

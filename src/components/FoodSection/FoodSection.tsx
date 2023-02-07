@@ -2,7 +2,7 @@ import { Heading } from "../Heading/Heading";
 import { FoodCard } from "../FoodCard/FoodCard";
 import "./style.css";
 import {typeoffoodInfo, reverseBooleanDataAtrrArgs} from "./types";
-import React, { useState} from "react";
+import { useState} from "react";
 import { CardStatus } from "../CardStatus/CardStatus";
 
 export const FoodSection = () => {
@@ -75,6 +75,11 @@ export const FoodSection = () => {
       };
     };
 
+    if (key === 'showRedText' && /Android|webOS|iPhone|iPad|iPod|BlackBerry|BB|PlayBook|IEMobile|Windows Phone|Kindle|Silk|Opera Mini/i
+    .test(navigator.userAgent)) {
+      return
+    }
+
     if (card.outOfStock) return
 
     if (key === 'showRedText' && isLeaved) {
@@ -105,6 +110,7 @@ export const FoodSection = () => {
           {foodInfo.map((item, index) => {
             return (
               <li
+                key={String(item.id)}
                 className='food-infolist__item food-section__item'
                 aria-labelledby='Выбрать корм для кота'>
                 <FoodCard isOutOfStock={item.outOfStock} handleClick={reverseBooleanDataAttr} product={item}>

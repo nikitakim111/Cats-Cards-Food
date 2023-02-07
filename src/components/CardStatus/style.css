@@ -6,6 +6,12 @@
 }
 
 .food-infolist__buy-btn {
+    padding: 0;
+    margin: 0;
+    background-color: rgba(0, 0, 0, 0);
+    line-height: 13px;
+    font-size: 13px;
+    border: 0;
     color: var(--default);
 }
 

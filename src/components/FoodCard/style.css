@@ -61,18 +61,20 @@
     cursor: pointer;
 }
 
+/* height 480.39px*/
 .food-card {
     position: relative;
     padding: 18px 59px 12px 43px;
     display: flex;
     align-items: initial;
     flex-direction: column;
-    min-height: 480.39px;
+    min-height: 441.39px;
     background: url('../../assets/cat.jpg') #F2F2F2 no-repeat 47% 181.5%;
     clip-path: polygon(13.5% 0, 100% 0, 100% 100%, 0 100%, 0 9%);
+    -webkit-clip-path: polygon(13.5% 0, 100% 0, 100% 100%, 0 100%, 0 9%);
     border: var(--default) 4px solid;
     border-radius: 12px;
-    box-sizing: border-box;
+    /* box-sizing: border-box; */
     outline: 0;
 }
 
